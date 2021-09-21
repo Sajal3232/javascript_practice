@@ -9,6 +9,35 @@
 <body>
     <p id="demo"></p>
     <script>
+        const hasMeeting = false;
+        const meeting = new Promise( function(resolve,reject){
+            if(!hasMeeting){
+                meetingDetails = {
+                    name: 'Techical',
+                    time: '2pm'
+                };
+                resolve(meetingDetails);
+            }else{
+                reject(new Error('metting is already schedule'))
+            }
+        });
+
+        const addToCalender = (meetingDetails) =>{
+            return new Promise((resolve,reject) => {
+                calender = `${meetingDetails.name} at ${meetingDetails.time}`;
+                resolve(calender)
+            } );
+        }
+        
+        meeting
+            .then(addToCalender)
+            .then((res) => {
+                console.log(res);
+            } )
+            .catch((res) => {
+                console.log(res.message);
+            })
+
         // function Person(name,age){
         //     this.names =name;
         //     this.ages = age;
