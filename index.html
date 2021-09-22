@@ -9,7 +9,7 @@
 <body>
     <p id="demo"></p>
     <script>
-        const hasMeeting = false;
+       const hasMeeting = false;
         const meeting = new Promise( function(resolve,reject){
             if(!hasMeeting){
                 meetingDetails = {
@@ -28,61 +28,23 @@
                 resolve(calender)
             } );
         }
-        
-        meeting
-            .then(addToCalender)
-            .then((res) => {
-                console.log(res);
-            } )
-            .catch((res) => {
-                console.log(res.message);
-            })
 
-        // function Person(name,age){
-        //     this.names =name;
-        //     this.ages = age;
-        //     this.changeName = function(name1){
-        //         this.names = name1;
-        //     }
-        // }
-        // var myHistory =new Person("sajal","50");
+        // meeting
+        //     .then(addToCalender)
+        //     .then((res) => {
+        //         console.log(res);
+        //     } )
+        //     .catch((res) => {
+        //         console.log(res.message);
+        //     })
 
-        // Person.da ="abc";
-        // // myHistory.name = function(){
-        // //     return this.names + " "  + this.ages;
-        // // };
-        // myHistory.changeName("sa");
-        // document.getElementById("demo").innerHTML =myHistory.da;
+        async function myFunction(){
+            const meetingDetails = await meeting;
+            const calender = await addToCalender(meetingDetails);
+            console.log(calender)
+        }
 
-        //     function fruits(){
-        //         let n=0;
-        //         return{
-        //             next:function(){
-        //                 if(n < 100){
-        //                     return{ value: n += 10, done:false}
-        //                 }else{
-        //                     return{done:true}
-        //                 }
-        //             }
-        //         }
-        //     }
-
-        //    var n= fruits()
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-        //     console.log(n.next());
-
+       myFunction();
     </script>
 </body>
 </html>
